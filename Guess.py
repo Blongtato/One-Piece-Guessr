@@ -1,59 +1,60 @@
 import CharacterInfo as ci
 import random
-def compare(x, y):  # Compares character selected by user to actual character by each attribute
+def compare(personGuess, personAnswer):  # Compares character selected by user to actual character by each attribute
     # Height Comparison
-    if x.height > y.height:
+    if personGuess.height > personAnswer.height:
         height_var = "Shorter"
-    elif x.height < y.height:
+    elif personGuess.height < personAnswer.height:
         height_var = "Taller"
     else:
         height_var = "Correct!"
     # Faction Comparison
-    if x.faction == y.faction:
+    if personGuess.faction == personAnswer.faction:
         fact_var = "Correct!"
-    elif x.faction[0] == y.faction[0]:
+    elif personGuess.faction[0] == personAnswer.faction[0]:
         fact_var = "Close"
     else:
         fact_var = "Incorrect"
     # Debut Arc Comparison
-    if x.debut > y.debut:
+    if personGuess.debut > personAnswer.debut:
         deb_var = "Earlier"
-    elif x.debut < y.debut:
+    elif personGuess.debut < personAnswer.debut:
         deb_var = "Later"
     else:
         deb_var = "Correct!"
     # Origin Comparison
-    if x.origin == y.origin:
+    if personGuess.origin == personAnswer.origin:
         or_var = "Correct!"
-    elif x.origin[0] == y.origin[0]:
+    elif personGuess.origin[0] == personAnswer.origin[0]:
         or_var = "Close"
     else:
         or_var = "Incorrect"
     # Race Comparison
-    if x.race == y.race:
+    if personGuess.race == personAnswer.race:
         race_var = "Correct!"
     else:
         race_var = "Incorrect"
     # Haki Comparison
-    if x.haki > y.haki:
+    if personGuess.haki > personAnswer.haki:
         haki_var = "Less"
-    elif x.haki < y.haki:
+    elif personGuess.haki < personAnswer.haki:
         haki_var = "More"
     else:
         haki_var = "Correct!"
     # Devil Fruit Comparison
-    if x.df_type == y.df_type:
+    if personGuess.df_type == personAnswer.df_type:
         df_var = "Correct!"
     else:
         df_var = "Incorrect"
     # Prints out comparisons
-    print(f"|Height: {x.height}m, {height_var}|\n"
-          f"|Group: {x.faction[0]}({x.faction[1]}), {fact_var}|\n"
-          f"|Debut Arc: {ci.arcs[x.debut]}, {deb_var}|\n"
-          f"|Origin: {x.origin[0]}({x.origin[1]}), {or_var}|\n"
-          f"|Race/Tribe: {x.race}, {race_var}|\n"
-          f"|Haki: {x.haki} forms, {haki_var}|\n"
-          f"|Devil Fruit: {x.df_type}, {df_var}|")
+    print(f"|Height: {personGuess.height}m, {height_var}|\n"
+          f"|Group: {personGuess.faction[0]}({personGuess.faction[1]}), {fact_var}|\n"
+          f"|Debut Arc: {ci.arcs[personGuess.debut]}, {deb_var}|\n"
+          f"|Origin: {personGuess.origin[0]}({personGuess.origin[1]}), {or_var}|\n"
+          f"|Race/Tribe: {personGuess.race}, {race_var}|\n"
+          f"|Haki: {personGuess.haki} forms, {haki_var}|\n"
+          f"|Devil Fruit: {personGuess.df_type}, {df_var}|")
+
 
 # User inputs character guess and chooses a random character from list
 guess = input("Input first character : ")
@@ -62,7 +63,7 @@ answer = random.choice(ci.names)
 while guess != answer:
     try:
         compare(ci.people[guess], ci.people[answer])
-    except:
+    except KeyError:
         print("Name not found.")
     guess = input("Next one? ")
 print("Good Job!")
