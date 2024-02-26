@@ -42,7 +42,7 @@ def compare(personGuess, personAnswer):  # Compares character selected by user t
     else:
         haki_var = "Correct!"
     # Devil Fruit Comparison
-    if personGuess.df_type == personAnswer.df_type:
+    if personGuess.df_type in personAnswer.df_type:
         df_var = "Correct!"
     else:
         df_var = "Incorrect"
