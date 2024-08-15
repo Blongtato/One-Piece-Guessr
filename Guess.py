@@ -61,9 +61,13 @@ guess = input("Input first character : ")
 answer = random.choice(ci.names)
 
 while guess != answer:
+    if guess == "I give up":
+        print(answer)
+        break
     try:
         compare(ci.people[guess], ci.people[answer])
     except KeyError:
         print("Name not found.")
     guess = input("Next one? ")
-print("Good Job!")
+if gues == answer:
+    print("Good Job!")
