@@ -57,17 +57,26 @@ def compare(personGuess, personAnswer):  # Compares character selected by user t
 
 
 # User inputs character guess and chooses a random character from list
-guess = input("Input first character : ")
-answer = random.choice(ci.names)
 
-while guess != answer:
-    if guess == "I give up":
-        print(answer)
-        break
-    try:
-        compare(ci.people[guess], ci.people[answer])
-    except KeyError:
-        print("Name not found.")
-    guess = input("Next one? ")
-if gues == answer:
-    print("Good Job!")
+response = True
+while response == True:
+    guess = input("Input first character : ")
+    again = ' '
+    answer = random.choice(ci.names)
+    while guess != answer:
+        if guess == "I give up":
+            print(answer)
+            break
+        try:
+            compare(ci.people[guess], ci.people[answer])
+        except KeyError:
+            print("Name not found.")
+        guess = input("Next one? ")
+    if guess == answer:
+        print("Good Job!")
+    again = input("Play again? (y/n) ")
+    if again == 'y':
+        response = True
+    else:
+        response = False
+
